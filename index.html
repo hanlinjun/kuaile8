@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数字摇奖机</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>🎱 数字摇奖机</h1>
+      <p class="subtitle">从 1–80 号球中随机摇取</p>
+    </header>
+
+    <section class="settings-panel">
+      <div class="setting-item">
+        <label for="ballCount">每组摇出球数</label>
+        <div class="input-group">
+          <button type="button" class="btn-adjust" data-target="ballCount" data-delta="-1">−</button>
+          <input type="number" id="ballCount" min="1" max="80" value="6">
+          <button type="button" class="btn-adjust" data-target="ballCount" data-delta="1">+</button>
+        </div>
+        <span class="hint">最多 80 个（不重复）</span>
+      </div>
+
+      <div class="setting-item">
+        <label for="groupCount">摇奖组数</label>
+        <div class="input-group">
+          <button type="button" class="btn-adjust" data-target="groupCount" data-delta="-1">−</button>
+          <input type="number" id="groupCount" min="1" max="20" value="1">
+          <button type="button" class="btn-adjust" data-target="groupCount" data-delta="1">+</button>
+        </div>
+        <span class="hint">最多 20 组</span>
+      </div>
+
+      <div class="setting-item">
+        <label>结果排序</label>
+        <div class="toggle-group">
+          <button type="button" class="toggle-btn active" data-sort="false">不排序</button>
+          <button type="button" class="toggle-btn" data-sort="true">从小到大</button>
+        </div>
+      </div>
+
+      <button type="button" id="drawBtn" class="btn-draw">
+        <span class="btn-text">开始摇奖</span>
+      </button>
+    </section>
+
+    <section class="machine-section">
+      <div class="machine">
+        <div class="machine-top">
+          <div class="machine-label">摇奖仓</div>
+        </div>
+        <div class="machine-drum" id="drum">
+          <div class="drum-glow"></div>
+          <div class="drum-balls" id="drumBalls"></div>
+          <div class="drum-overlay"></div>
+        </div>
+        <div class="machine-chute">
+          <div class="chute-line"></div>
+        </div>
+        <div class="machine-display">
+          <div class="display-label">当前摇出</div>
+          <div class="display-balls" id="displayBalls">
+            <span class="display-placeholder">点击「开始摇奖」</span>
+          </div>
+        </div>
+      </div>
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="status-text" id="statusText"></div>
+    </section>
+
+    <section class="results-section" id="resultsSection">
+      <h2>摇奖结果</h2>
+      <div class="results-list" id="resultsList"></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
